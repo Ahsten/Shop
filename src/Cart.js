@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import {CartContext} from './CartContext';
+import data from './Data';
 import Item from './Item';
 
-
 function Cart(props){  
-    const [items, setItems] = useContext(CartContext);
+    const {items, setItems} = useContext(CartContext);
+    const itemList = items.map(item => <div>{item}</div>);
 
-    const list = items.map(item => item.name);
+    function handleCheckout(){
+        sessionStorage.clear();
+        setItems([]);
+    }
 
     return(
         <div className="cart" style={props.toggle}>
@@ -16,8 +20,8 @@ function Cart(props){
                 className="close">
                 Close</a>
                 <h2>Shopping Cart</h2>
-                <div>{list}</div>
-                <button>Checkout</button>
+                <div>{itemList}</div>
+                <button onClick={handleCheckout}>Checkout</button>
             </div>
         </div>
     )

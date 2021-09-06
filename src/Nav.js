@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import './styles.css';
 import logo from './logo.png'
 import Cart from './Cart';
 import { CartContext } from './CartContext'
 
 function Navbar(){
-    const [items, setItems] = useContext(CartContext);
-    //Used to toggle the display of the Cart
+    const {items} = useContext(CartContext);
     const [display, setDisplay] = useState({display: "none"});
-
 
     return (
         <div className="nav">

@@ -3,10 +3,10 @@ import Item from './Item';
 import data from './Data';
 import Cart from './Cart';
 
-function Shop(){
+function Shop(props){
     //Map the data to items and add to list of items
     const listItems = data.map((item)=> 
-        <Item  key={item.id} name={item.id} img={item.image} price={item.price} />
+        <Item key={item.id} name={item.id} img={item.image} price={item.price} quantity={props.qty} addItem={props.addItem}/>
     );
 
     return (
@@ -14,7 +14,6 @@ function Shop(){
             <div className="shop">
             {listItems}
             </div>
-            <Cart />
         </div>
     )
 }
