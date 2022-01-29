@@ -87,12 +87,20 @@ a{
     display: block;
 }
 
+.footer-container{
+    position: fixed;
+    bottom: 0;
+    overflow: hidden;
+    width: 100%;
+
+}
+
 .footer{
     display: flex;
     list-style: none;
     justify-content: center;
-    bottom: 0;
-    position: fixed;
+    bottom: 0px;
+    position: static;
     width: 100%;
     border-top: 2px solid black;
 }
