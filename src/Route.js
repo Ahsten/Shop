@@ -5,14 +5,14 @@ import Home from './Home';
 import Shop from './Shop';
 import './styles.css';
 import Navbar from './Nav';
+import data from './Data';
 
 function Routes(){
     //Grab the cart list object and convert to an array
     let list = sessionStorage.getItem('sKey');
     list = JSON.parse(list);
 
-    const [items, setItems] = useState(list || [] );
-    const [display, setDisplay] = useState({display: "none"});
+    const [items, setItems] = useState(list || data);
 
     //Update storage every time items changes
     useEffect(() => {

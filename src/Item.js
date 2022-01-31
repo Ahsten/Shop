@@ -14,12 +14,25 @@ export function CartItem({name, quantity, price}){
 function Item(props){
     const [image] = useState(props.img);
     const {items, setItems} = useContext(CartContext);
-    
-    function handleClick(){
-        setItems(items.concat(props.name));
+
+    function handleInt(string){
+        let num = parseInt(string) + 1;
+        let strQty = string.toString();
+        return strQty;
     }
-
-
+    
+    function handleClick(id){
+        console.log(items);
+        setItems(
+            items.map((item) =>{
+                if(item.id === id){
+                    return {...item, qty: item.qty + 1 }
+                } else {
+                    return item;
+                }
+            })
+        )
+    }
 
     return (
         <div className="item">
@@ -27,7 +40,7 @@ function Item(props){
             <a>{props.name}</a><br/>
             <a>{props.price}</a><br/>
             <a>{props.quantity}</a>
-            <a onClick={handleClick} className="add-cart">Add to Cart</a>
+            <a onClick={()=>handleClick(props.name)} className="add-cart">Add to Cart</a>
         </div>
     )
 }

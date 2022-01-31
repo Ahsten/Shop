@@ -5,12 +5,24 @@ import Item from './Item';
 
 function Cart(props){  
     const {items, setItems} = useContext(CartContext);
-    const itemList = items.map(item => <div>{item}</div>);
+
+    function CartItem({name, quantity, price}){
+        return(
+            <div className="cart-item">
+                <div>{name}</div>
+                <div>Qty: {quantity}</div>
+                <div>{price}</div>
+            </div>
+        )
+    }
+
+    const itemList = items.map(item => <CartItem name={item.id} quantity={item.qty} price={item.price} />);
 
     function handleCheckout(){
         sessionStorage.clear();
         setItems([]);
     }
+
 
     return(
         <div className="cart" style={props.toggle}>
@@ -20,7 +32,9 @@ function Cart(props){
                 className="close">
                 Close</a>
                 <h2>Shopping Cart</h2>
-                <div>{itemList}</div>
+                <div>
+                    {itemList}
+                </div>
                 <button onClick={handleCheckout}>Checkout</button>
             </div>
         </div>
