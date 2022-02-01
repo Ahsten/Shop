@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { renderIntoDocument } from 'react-dom/cjs/react-dom-test-utils.production.min';
 import {CartContext} from './CartContext';
 
 export function CartItem({name, quantity, price}){
@@ -15,23 +16,28 @@ function Item(props){
     const [image] = useState(props.img);
     const {items, setItems} = useContext(CartContext);
 
-    function handleInt(string){
-        let num = parseInt(string) + 1;
-        let strQty = string.toString();
-        return strQty;
+    function checkForItem(itemName){
+        for(const name in items){
+            if(items[name] === itemName);
+        }
     }
     
     function handleClick(id){
-        console.log(items);
-        setItems(
-            items.map((item) =>{
-                if(item.id === id){
-                    return {...item, qty: item.qty + 1 }
-                } else {
-                    return item;
+        console.log(items)
+        if(!items.some(item => item.name === id)){
+            let item = {
+                name: props.name,
+                price: props.price,
+                quantity: 1,
+            }
+            setItems(items.concat(item));
+        } else {
+            items.forEach(item =>{
+                if(item.name === id){
+                    item.quantity = item.quantity + 1;
                 }
             })
-        )
+        }   
     }
 
     return (

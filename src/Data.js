@@ -4,22 +4,22 @@ import green from './imgs/greenjacket.jpg';
 
 const data = [
     {
-        id: 'FOUNDATIONS ANORAK - RED',
+        name: 'FOUNDATIONS ANORAK - RED',
         image: red,
         price: '$135',
-        qty: 0,
+        quantity: 0,
     },
     {
-        id: 'FOUNDATIONS ANORAK - BLACK',
+        name: 'FOUNDATIONS ANORAK - BLACK',
         image: black,
         price: '$135',
-        qty: 0,
+        quantity: 0,
     },
     {
-        id: 'FOUNDATIONS ANORAK - ALPINE',
+        name: 'FOUNDATIONS ANORAK - ALPINE',
         image: green,
         price: '$135',
-        qty: 0,
+        quantity: 0,
     }
 ]
 

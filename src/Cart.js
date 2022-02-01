@@ -1,22 +1,18 @@
 import React, { useContext } from 'react';
+import { useEffect } from 'react/cjs/react.production.min';
 import {CartContext} from './CartContext';
+import { CartItem } from './Item';
 import data from './Data';
 import Item from './Item';
 
 function Cart(props){  
     const {items, setItems} = useContext(CartContext);
 
-    function CartItem({name, quantity, price}){
-        return(
-            <div className="cart-item">
-                <div>{name}</div>
-                <div>Qty: {quantity}</div>
-                <div>{price}</div>
-            </div>
-        )
-    }
-
-    const itemList = items.map(item => <CartItem name={item.id} quantity={item.qty} price={item.price} />);
+    
+    const itemList = items.map(item => {
+        <CartItem name={item.name} quantity={item.quantity} price={item.price} /> 
+    });
+                  
 
     function handleCheckout(){
         sessionStorage.clear();
@@ -33,7 +29,9 @@ function Cart(props){
                 Close</a>
                 <h2>Shopping Cart</h2>
                 <div>
-                    {itemList}
+                {items.map((item)=> {
+                    return <CartItem name={item.name} price={item.price} quantity={item.quantity} />
+                })}
                 </div>
                 <button onClick={handleCheckout}>Checkout</button>
             </div>

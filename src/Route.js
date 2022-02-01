@@ -12,7 +12,7 @@ function Routes(){
     let list = sessionStorage.getItem('sKey');
     list = JSON.parse(list);
 
-    const [items, setItems] = useState(list || data);
+    const [items, setItems] = useState(list || []);
 
     //Update storage every time items changes
     useEffect(() => {
