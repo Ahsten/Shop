@@ -1,27 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { renderIntoDocument } from 'react-dom/cjs/react-dom-test-utils.production.min';
+import React, { useContext, useState } from 'react';
 import {CartContext} from './CartContext';
-
-export function CartItem({name, quantity, price}){
-    return(
-        <div className="cart-item">
-            <div>{name}</div>
-            <div>Qty: {quantity}</div>
-            <div>{price}</div>
-        </div>
-    )
-}
 
 function Item(props){
     const [image] = useState(props.img);
     const {items, setItems} = useContext(CartContext);
-
-    function checkForItem(itemName){
-        for(const name in items){
-            if(items[name] === itemName);
-        }
-    }
     
+    //Add item to the cart or add to quantity if alreadu in the cart
     function handleClick(id){
         console.log(items)
         if(!items.some(item => item.name === id)){

@@ -8,10 +8,11 @@ import Navbar from './Nav';
 import data from './Data';
 
 function Routes(){
+
     //Grab the cart list object and convert to an array
     let list = sessionStorage.getItem('sKey');
     list = JSON.parse(list);
-
+    
     const [items, setItems] = useState(list || []);
 
     //Update storage every time items changes

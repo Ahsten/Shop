@@ -1,24 +1,23 @@
 import React, { useContext } from 'react';
-import { useEffect } from 'react/cjs/react.production.min';
 import {CartContext} from './CartContext';
-import { CartItem } from './Item';
-import data from './Data';
-import Item from './Item';
+
+export function CartItem({name, quantity, price}){
+    return(
+        <div className="cart-item">
+            <div>{name}</div>
+            <div>Qty: {quantity}</div>
+            <div>{price}</div>
+        </div>
+    )
+}
 
 function Cart(props){  
-    const {items, setItems} = useContext(CartContext);
-
-    
-    const itemList = items.map(item => {
-        <CartItem name={item.name} quantity={item.quantity} price={item.price} /> 
-    });
-                  
+    const {items, setItems} = useContext(CartContext);            
 
     function handleCheckout(){
         sessionStorage.clear();
         setItems([]);
     }
-
 
     return(
         <div className="cart" style={props.toggle}>
