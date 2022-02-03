@@ -5,7 +5,7 @@ function Item(props){
     const [image] = useState(props.img);
     const {items, setItems} = useContext(CartContext);
     
-    //Add item to the cart or add to quantity if alreadu in the cart
+    //Add item to the cart or add to quantity if already in the cart
     function handleClick(id){
         console.log(items)
         if(!items.some(item => item.name === id)){
